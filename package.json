@@ -1,0 +1,45 @@
+{
+  "name": "webdriverio-cucumber-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "wdio ./wdio.conf.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/register": "^7.12.1",
+    "@wdio/allure-reporter": "^6.7.2",
+    "@wdio/cli": "^6.7.4",
+    "@wdio/cucumber-framework": "^6.7.3",
+    "@wdio/junit-reporter": "^6.7.0",
+    "@wdio/local-runner": "^6.7.3",
+    "@wdio/selenium-standalone-service": "^6.7.3",
+    "@wdio/spec-reporter": "^6.7.0",
+    "adm-zip": "^0.4.16",
+    "babel-eslint": "^10.1.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.13.0",
+    "eslint-plugin-wdio": "^6.6.0",
+    "supertest": "^6.0.1",
+    "wdio-cucumber-reporter": "0.0.2",
+    "wdio-cucumberjs-json-reporter": "^2.0.2",
+    "wdio-json-reporter": "^2.0.0"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
+  }
+}

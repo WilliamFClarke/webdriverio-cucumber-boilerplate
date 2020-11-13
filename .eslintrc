@@ -1,0 +1,7 @@
+{
+    "plugins": [
+      "wdio"
+    ],
+    "extends": "plugin:wdio/recommended",
+    "parser": "babel-eslint"
+  }
