@@ -5,7 +5,8 @@ module.exports = {
   getTestCases: async function () {
     var res = await apiHelper.sendGETRequest(
       "https://api.adaptavist.io/tm4j/v2/",
-      "testcases"
+      "testcases",
+      `Bearer ${process.env.ACCESS_TOKEN}`,
     );
     return res.body;
   },
@@ -13,7 +14,8 @@ module.exports = {
   getTestCase: async function (testCaseKey) {
     var res = await apiHelper.sendGETRequest(
       "https://api.adaptavist.io/tm4j/v2/",
-      `testcases/${testCaseKey}`
+      `testcases/${testCaseKey}`,
+      `Bearer ${process.env.ACCESS_TOKEN}`,
     );
     return res.body;
   },
@@ -21,13 +23,14 @@ module.exports = {
   getAllProjects: async function () {
     var res = await apiHelper.sendGETRequest(
       "https://api.adaptavist.io/tm4j/v2/",
-      `projects`
+      `projects`,
+      `Bearer ${process.env.ACCESS_TOKEN}`,
     );
     return res.body;
   },
 
   postCucumberTestReport: async function (
-    projectKey = 53610,
+    projectKey = process.env.PROJECT_KEY,
     autoCreateTestCases = false,
     report
   ) {
@@ -40,6 +43,7 @@ module.exports = {
         `?projectKey=${projectKey}` +
         "&" +
         `autoCreateTestCases=${autoCreateTestCases}`,
+      `Bearer ${process.env.ACCESS_TOKEN}`,
       "cucumberResults/report.zip"
     );
     return res.body;

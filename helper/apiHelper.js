@@ -1,21 +1,21 @@
 require("dotenv").config();
 const supertest = require("supertest");
 
-exports.sendGETRequest = async (baseUrl, apiEndPoint) => {
+exports.sendGETRequest = async (baseUrl, apiEndPoint, auth) => {
   try {
     let res = await supertest(baseUrl)
       .get(apiEndPoint)
       .retry(2)
       .set("Accept", "application/json")
       .set("Content-Type", "application/json")
-      .set("Authorization", `Bearer ${process.env.ACCESS_TOKEN}`);
+      .set("Authorization", auth);
     return res;
   } catch (err) {
     console.log("Error in sending GET Request: ", err);
   }
 };
 
-exports.sendPOSTRequest = async (baseUrl, apiEndPoint, requestBody) => {
+exports.sendPOSTRequest = async (baseUrl, apiEndPoint, auth, requestBody) => {
   try {
     let res = await supertest(baseUrl)
       .post(apiEndPoint)
@@ -30,7 +30,7 @@ exports.sendPOSTRequest = async (baseUrl, apiEndPoint, requestBody) => {
   }
 };
 
-exports.sendPOSTWithFileRequest = async (baseUrl, apiEndPoint, file) => {
+exports.sendPOSTWithFileRequest = async (baseUrl, apiEndPoint, auth, file) => {
   try {
     let res = await supertest(baseUrl)
       .post(apiEndPoint)
@@ -45,7 +45,7 @@ exports.sendPOSTWithFileRequest = async (baseUrl, apiEndPoint, file) => {
   }
 };
 
-exports.sendPUTRequest = async (baseUrl, apiEndPoint, requestBody) => {
+exports.sendPUTRequest = async (baseUrl, apiEndPoint, auth, requestBody) => {
   try {
     let res = await supertest(baseUrl)
       .put(apiEndPoint)
@@ -59,7 +59,7 @@ exports.sendPUTRequest = async (baseUrl, apiEndPoint, requestBody) => {
     console.log("Error in sending PUT Request: ", err);
   }
 };
-exports.sendDELETERequest = async (baseUrl, apiEndPoint) => {
+exports.sendDELETERequest = async (baseUrl, apiEndPoint, auth) => {
   try {
     let res = await supertest(baseUrl)
       .delete(apiEndPoint)

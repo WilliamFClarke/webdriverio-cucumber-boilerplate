@@ -1,4 +1,5 @@
 require("dotenv").config();
+const sync = require('@wdio/sync').default
 
 exports.config = {
   //
@@ -82,6 +83,9 @@ exports.config = {
     // 	browserName: "safari",
     // },
   ],
+  
+  
+  automationProtocol: 'devtools',
   //
   // ===================
   // Test Configurations
@@ -129,7 +133,7 @@ exports.config = {
   // Services take over a specific job you don't want to take care of. They enhance
   // your test setup with almost no effort. Unlike plugins, they don't add new
   // commands. Instead, they hook themselves up into the test process.
-  services: ["selenium-standalone"],
+  // services: ["selenium-standalone"],
   // services: ['chromedriver'],
   // services: ['browserstack'],
   // services: ["docker"],
@@ -342,10 +346,11 @@ exports.config = {
   onComplete: async function (exitCode, config, capabilities, results) {
     //Upload Test Results to Test Manager 4 Jira
     //TODO: Get Project Key from Test
-    //TODO: Add a an option to enable or disable TM4J Integration
-    const tm4j = require("./helper/tm4jHelper.js");
-    const file = "./cucumberResults/";
-    await tm4j.postCucumberTestReport(undefined, undefined, file);
+    if (process.env.UPLOAD_TM4J_RESULT=="TRUE") {
+      const tm4j = require("./helper/tm4jHelper.js");
+      const file = "./cucumberResults/";
+      await tm4j.postCucumberTestReport(undefined, undefined, file);
+    }
   },
   /**
    * Gets executed when a refresh happens.
