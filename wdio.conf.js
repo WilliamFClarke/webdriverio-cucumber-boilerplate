@@ -361,10 +361,10 @@ exports.config = {
   onComplete:  function (exitCode, config, capabilities, results) {
     //Upload Test Results to Test Manager 4 Jira
     //TODO: Get Project Key from Test
-    if (process.env.UPLOAD_TM4J_RESULT=="TRUE") {
-      const tm4j = require("./helper/tm4jHelper.js");
+    if (process.env.ZEPHYR_UPLOAD_RESULT=="TRUE") {
+      const zephyrScale = require("./helper/zephyrScaleHelper.js");
       const file = "./cucumberResults/";
-       tm4j.postCucumberTestReport(undefined, undefined, file);
+      zephyrScale.postCucumberTestReport(undefined, undefined, file);
     }
   },
   /**

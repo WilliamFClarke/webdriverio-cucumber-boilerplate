@@ -6,7 +6,7 @@ module.exports = {
     var res =  apiHelper.sendGETRequest(
       "https://api.adaptavist.io/tm4j/v2/",
       "testcases",
-      `Bearer ${process.env.ACCESS_TOKEN}`,
+      `Bearer ${process.env.ZEPHYR_ACCESS_TOKEN}`,
     );
     return res.body;
   },
@@ -15,7 +15,7 @@ module.exports = {
     var res =  apiHelper.sendGETRequest(
       "https://api.adaptavist.io/tm4j/v2/",
       `testcases/${testCaseKey}`,
-      `Bearer ${process.env.ACCESS_TOKEN}`,
+      `Bearer ${process.env.ZEPHYR_ACCESS_TOKEN}`,
     );
     return res.body;
   },
@@ -24,13 +24,13 @@ module.exports = {
     var res =  apiHelper.sendGETRequest(
       "https://api.adaptavist.io/tm4j/v2/",
       `projects`,
-      `Bearer ${process.env.ACCESS_TOKEN}`,
+      `Bearer ${process.env.ZEPHYR_ACCESS_TOKEN}`,
     );
     return res.body;
   },
 
   postCucumberTestReport:  function (
-    projectKey = process.env.PROJECT_KEY,
+    projectKey = process.env.ZEPHYR_PROJECT_KEY,
     autoCreateTestCases = false,
     report
   ) {
@@ -43,7 +43,7 @@ module.exports = {
         `?projectKey=${projectKey}` +
         "&" +
         `autoCreateTestCases=${autoCreateTestCases}`,
-      `Bearer ${process.env.ACCESS_TOKEN}`,
+      `Bearer ${process.env.ZEPHYR_ACCESS_TOKEN}`,
       "cucumberResults/report.zip"
     );
     return res.body;
