@@ -4,4 +4,5 @@ Feature: The Internet Guinea Pig Website
 
         Given I am on the home page
         When I check the title
+        Then peform a fullscreen image check with tag homePage
 

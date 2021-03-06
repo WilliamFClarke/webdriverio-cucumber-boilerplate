@@ -8,20 +8,23 @@ const pages = {
   home: HomePage
 };
 
-Given(/^I am on the (\w+) page$/, async (page) => {
-  await pages[page].open();
+Given(/^I am on the (\w+) page$/,  (page) => {
+   pages[page].open();
 });
 
-When(/^I login with (\w+) and (.+)$/, async (username, password) => {
-  await LoginPage.login(username, password);
+When(/^I login with (\w+) and (.+)$/,  (username, password) => {
+   LoginPage.login(username, password);
 });
 
-Then(/^I should see a flash message saying (.*)$/, async (message) => {
-  await expect(SecurePage.flashAlert).toBeExisting();
-  await expect(SecurePage.flashAlert).toHaveTextContaining(message);
+Then(/^I should see a flash message saying (.*)$/,  (message) => {
+   expect(SecurePage.flashAlert).toBeExisting();
+   expect(SecurePage.flashAlert).toHaveTextContaining(message);
 });
 
 When(/^I check the title$/, () => {
   HomePage.checkTitle();
 });
 
+When(/^peform a fullscreen image check with tag (.*)$/, (tag) => {
+  expect(browser.checkFullPageScreen('tag', { /* some options */ })).toEqual(0);
+});

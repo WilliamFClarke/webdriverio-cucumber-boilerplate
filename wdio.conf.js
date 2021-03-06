@@ -1,5 +1,5 @@
 require("dotenv").config();
-const sync = require('@wdio/sync').default
+const { join } = require('path');
 
 exports.config = {
   //
@@ -133,6 +133,21 @@ exports.config = {
   // Services take over a specific job you don't want to take care of. They enhance
   // your test setup with almost no effort. Unlike plugins, they don't add new
   // commands. Instead, they hook themselves up into the test process.
+  services: [
+    ['image-comparison',
+    // The options
+    {
+        // Some options, see the docs for more
+        baselineFolder: join(process.cwd(), './baseline/'),
+        formatImageName: '{tag}-{logName}-{width}x{height}',
+        screenshotPath: join(process.cwd(), '.tmp/'),
+        savePerInstance: true,
+        autoSaveBaseline: true,
+        blockOutStatusBar: true,
+        blockOutToolBar: true,
+    }
+    ]
+],
   // services: ["selenium-standalone"],
   // services: ['chromedriver'],
   // services: ['browserstack'],
@@ -343,13 +358,13 @@ exports.config = {
    * @param {Array.<Object>} capabilities list of capabilities details
    * @param {<Object>} results object containing test results
    */
-  onComplete: async function (exitCode, config, capabilities, results) {
+  onComplete:  function (exitCode, config, capabilities, results) {
     //Upload Test Results to Test Manager 4 Jira
     //TODO: Get Project Key from Test
     if (process.env.UPLOAD_TM4J_RESULT=="TRUE") {
       const tm4j = require("./helper/tm4jHelper.js");
       const file = "./cucumberResults/";
-      await tm4j.postCucumberTestReport(undefined, undefined, file);
+       tm4j.postCucumberTestReport(undefined, undefined, file);
     }
   },
   /**

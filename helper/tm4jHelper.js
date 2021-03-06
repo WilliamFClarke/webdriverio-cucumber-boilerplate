@@ -2,8 +2,8 @@ var AdmZip = require("adm-zip");
 var apiHelper = require("../helper/apiHelper.js");
 
 module.exports = {
-  getTestCases: async function () {
-    var res = await apiHelper.sendGETRequest(
+  getTestCases:  function () {
+    var res =  apiHelper.sendGETRequest(
       "https://api.adaptavist.io/tm4j/v2/",
       "testcases",
       `Bearer ${process.env.ACCESS_TOKEN}`,
@@ -11,8 +11,8 @@ module.exports = {
     return res.body;
   },
 
-  getTestCase: async function (testCaseKey) {
-    var res = await apiHelper.sendGETRequest(
+  getTestCase:  function (testCaseKey) {
+    var res =  apiHelper.sendGETRequest(
       "https://api.adaptavist.io/tm4j/v2/",
       `testcases/${testCaseKey}`,
       `Bearer ${process.env.ACCESS_TOKEN}`,
@@ -20,8 +20,8 @@ module.exports = {
     return res.body;
   },
 
-  getAllProjects: async function () {
-    var res = await apiHelper.sendGETRequest(
+  getAllProjects:  function () {
+    var res =  apiHelper.sendGETRequest(
       "https://api.adaptavist.io/tm4j/v2/",
       `projects`,
       `Bearer ${process.env.ACCESS_TOKEN}`,
@@ -29,7 +29,7 @@ module.exports = {
     return res.body;
   },
 
-  postCucumberTestReport: async function (
+  postCucumberTestReport:  function (
     projectKey = process.env.PROJECT_KEY,
     autoCreateTestCases = false,
     report
@@ -37,7 +37,7 @@ module.exports = {
     var zip = new AdmZip();
     zip.addLocalFolder(report);
     zip.writeZip("./cucumberResults/report.zip");
-    var res = await apiHelper.sendPOSTWithFileRequest(
+    var res =  apiHelper.sendPOSTWithFileRequest(
       "https://api.adaptavist.io/tm4j/v2/",
       `automations/executions/cucumber` +
         `?projectKey=${projectKey}` +

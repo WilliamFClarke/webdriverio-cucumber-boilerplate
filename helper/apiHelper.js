@@ -1,9 +1,9 @@
 require("dotenv").config();
 const supertest = require("supertest");
 
-exports.sendGETRequest = async (baseUrl, apiEndPoint, auth) => {
+exports.sendGETRequest =  (baseUrl, apiEndPoint, auth) => {
   try {
-    let res = await supertest(baseUrl)
+    let res =  supertest(baseUrl)
       .get(apiEndPoint)
       .retry(2)
       .set("Accept", "application/json")
@@ -15,9 +15,9 @@ exports.sendGETRequest = async (baseUrl, apiEndPoint, auth) => {
   }
 };
 
-exports.sendPOSTRequest = async (baseUrl, apiEndPoint, auth, requestBody) => {
+exports.sendPOSTRequest =  (baseUrl, apiEndPoint, auth, requestBody) => {
   try {
-    let res = await supertest(baseUrl)
+    let res =  supertest(baseUrl)
       .post(apiEndPoint)
       .retry(2)
       .set("Accept", "application/json")
@@ -30,9 +30,9 @@ exports.sendPOSTRequest = async (baseUrl, apiEndPoint, auth, requestBody) => {
   }
 };
 
-exports.sendPOSTWithFileRequest = async (baseUrl, apiEndPoint, auth, file) => {
+exports.sendPOSTWithFileRequest =  (baseUrl, apiEndPoint, auth, file) => {
   try {
-    let res = await supertest(baseUrl)
+    let res =  supertest(baseUrl)
       .post(apiEndPoint)
       .retry(2)
       .set("Accept", "application/json")
@@ -45,9 +45,9 @@ exports.sendPOSTWithFileRequest = async (baseUrl, apiEndPoint, auth, file) => {
   }
 };
 
-exports.sendPUTRequest = async (baseUrl, apiEndPoint, auth, requestBody) => {
+exports.sendPUTRequest =  (baseUrl, apiEndPoint, auth, requestBody) => {
   try {
-    let res = await supertest(baseUrl)
+    let res =  supertest(baseUrl)
       .put(apiEndPoint)
       .retry(2)
       .set("Accept", "application/json")
@@ -59,9 +59,9 @@ exports.sendPUTRequest = async (baseUrl, apiEndPoint, auth, requestBody) => {
     console.log("Error in sending PUT Request: ", err);
   }
 };
-exports.sendDELETERequest = async (baseUrl, apiEndPoint, auth) => {
+exports.sendDELETERequest =  (baseUrl, apiEndPoint, auth) => {
   try {
-    let res = await supertest(baseUrl)
+    let res =  supertest(baseUrl)
       .delete(apiEndPoint)
       .retry(2)
       .set("Accept", "application/json")

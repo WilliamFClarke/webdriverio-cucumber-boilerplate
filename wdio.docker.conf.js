@@ -1,6 +1,5 @@
 require("dotenv").config();
 
-// import default config
 let defaultConfig = require("./wdio.conf.js").config;
 let maxInstances = 5;
 let capabilities = [
@@ -22,7 +21,6 @@ let capabilities = [
 	// 	},
 	// },
 ];
-// delete path property
 delete defaultConfig.path;
 
 let DockerConfig = Object.assign(defaultConfig, {

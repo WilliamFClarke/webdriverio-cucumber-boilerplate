@@ -19,9 +19,6 @@ class LoginPage extends Page {
 
 
   checkTitle() {
-    console.log("test1")
-    browser.pause(5000)
-    console.log("test2")
     const elem = $(`//*[@id="mainheader"]/div/h1`);
     expect($(`//*[@id="mainheader"]/div/h1`).getText()).toBe("William Clarke")
   }

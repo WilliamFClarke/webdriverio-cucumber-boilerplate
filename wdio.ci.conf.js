@@ -24,10 +24,8 @@ let capabilities = [
 	// 	},
 	// },
 ];
-// delete path property
-delete defaultConfig.path;
 
-// clone default conf and docker service
+delete defaultConfig.path;
 
 let ciConfig = Object.assign(defaultConfig, {
 	maxInstances,
