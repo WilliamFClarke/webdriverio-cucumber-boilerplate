@@ -1,4 +1,4 @@
-Feature: The Internet Guinea Pig Website
+Feature: Homepage
 
     Scenario: As a user, I can view the homepage
 
