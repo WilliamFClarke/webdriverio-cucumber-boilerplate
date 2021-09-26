@@ -21,8 +21,10 @@ Then(/^I should see a flash message saying (.*)$/,  (message) => {
    expect(SecurePage.flashAlert).toHaveTextContaining(message);
 });
 
-When(/^I check the title$/, () => {
+When(/^I check the title and links$/, () => {
   HomePage.checkTitle();
+  HomePage.checkSubtitle();
+  HomePage.checkLinkedInIcon();
 });
 
 When(/^peform a fullscreen image check with tag (.*)$/, (tag) => {
