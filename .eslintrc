@@ -1,7 +1,42 @@
 {
-    "plugins": [
-      "wdio"
-    ],
-    "extends": "plugin:wdio/recommended",
-    "parser": "babel-eslint"
+  "plugins": ["wdio"],
+  "env": {
+      "browser": true,
+      "es2021": true,
+      "node": true
+  },
+  "extends": ["airbnb-base", "plugin:wdio/recommended", "prettier"],
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+      "ecmaVersion": 12,
+      "sourceType": "module"
+  },
+  "rules": {
+      "indent": ["error", 4, { "SwitchCase": 1 }],
+      "max-len": [
+          "error",
+          130,
+          2,
+          {
+              "ignoreStrings": false
+          }
+      ],
+      "semi": [
+          "error",
+          "never",
+          {
+              "beforeStatementContinuationChars": "always"
+          }
+      ],
+      "no-unused-vars": [
+          "error",
+          { "vars": "all", "args": "none", "ignoreRestSiblings": false }
+      ],
+      "global-require": 0,
+      "no-console": "off",
+      "class-methods-use-this": "off"
+  },
+  "globals": {
+      "downloadDir": true
   }
+}
