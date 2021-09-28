@@ -167,6 +167,13 @@ Test Runners
 
 ESLint
 
+Added ESLint will run in github actions on each commit.
+To complete an ESLint check localy before commiting run:
+
+```
+npx eslint .
+```
+
 -   "eslint-plugin-wdio": "^6.6.0",
 
 Compiler
