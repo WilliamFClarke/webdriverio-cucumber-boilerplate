@@ -167,6 +167,8 @@ Test Runners
 
 ESLint
 
+Added ESLint, PR's must pass the workflow with no warnings
+
 -   "eslint-plugin-wdio": "^6.6.0",
 
 Compiler
