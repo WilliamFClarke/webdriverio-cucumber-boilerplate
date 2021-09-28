@@ -14,13 +14,14 @@
   "rules": {
       "indent": ["error", 4, { "SwitchCase": 1 }],
       "max-len": [
-          "error",
-          130,
-          2,
-          {
-              "ignoreStrings": false
-          }
-      ],
+        "error",
+        130,
+        2,
+        {
+            "ignoreStrings": true,
+            "ignoreTemplateLiterals": true
+        }
+    ],
       "semi": [
           "error",
           "never",
