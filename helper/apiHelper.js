@@ -66,7 +66,7 @@ exports.sendPUTRequest =  (baseUrl, apiEndPoint, auth, requestBody) => {
 exports.sendDELETERequest =  (baseUrl, apiEndPoint, auth) => {
     try {
         const res =  supertest(baseUrl)
-            .delete(apiEndPoint)
+                .delete(apiEndPoint)
             .retry(2)
             .set("Accept", "application/json")
             .set("Content-Type", "application/json")
